@@ -1,11 +1,11 @@
 import 'package:firecrudapp/const.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'customeWidget/buttonWidget.dart';
-import 'customeWidget/detailsColumnWidget.dart';
-import 'customeWidget/iconButton.dart';
-import 'customeWidget/textFormField.dart';
-import 'firebaseService.dart';
+import '../customeWidget/buttonWidget.dart';
+import '../customeWidget/detailsColumnWidget.dart';
+import '../customeWidget/iconButton.dart';
+import '../customeWidget/textFormField.dart';
+import '../firebaseService.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
         final formKey = GlobalKey<FormState>();
 
         return AlertDialog(
-          title: const Text('Fill the Details'),
+          title: Text('Fill the Details'),
           content: SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -164,6 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CustomTextFormField(
+                    length: 30,
                     controller: controller.nameController,
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter a name' : null,
@@ -171,6 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   CustomTextFormField(
+                    length: 3,
                     controller: controller.ageController,
                     keyboardType: TextInputType.number,
                     labelText: "Age",
@@ -179,6 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   CustomTextFormField(
+                    length: 20,
                     controller: controller.placeController,
                     labelText: "Place",
                     validator: (value) =>
@@ -186,6 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(height: 10),
                   CustomTextFormField(
+                    length: 10,
                     controller: controller.phoneNumberController,
                     keyboardType: TextInputType.phone,
                     labelText: 'Phone Number',

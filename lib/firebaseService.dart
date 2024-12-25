@@ -34,7 +34,7 @@ class FirestoreService {
     required String doc,
   }) async {
     try {
-      await firestore.collection('').doc(doc).update(data);
+      await firestore.collection(mainCollection).doc(doc).update(data);
 
       SnackBarModel.show(Get.context!, 'User Update successfully',
           backgroundColor: Colors.green);

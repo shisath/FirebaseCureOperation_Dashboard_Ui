@@ -1,8 +1,10 @@
+import 'package:firecrudapp/CustomeWidget/textWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-
-import 'homeScreen.dart';
+import 'CRUDOperationUi/homeScreen.dart';
+import 'Dashboard/dashboard_screen.dart';
+import 'const.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,20 +21,82 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Firebase CRUD',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomeScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(const HomeScreen());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(10.0)), // Rectangular shape
+                    ),
+                  ),
+                  child: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomText(
+                        text: 'Task One',
+                        align: TextAlign.center,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      CustomText(
+                        text: 'Firebase CRUD Operation',
+                        align: TextAlign.center,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle Task Two button press
+                    Get.to(DashboardScreen());
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(10.0)), // Rectangular shape
+                    ),
+                  ),
+                  child: const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomText(
+                        text: 'Task Two',
+                        align: TextAlign.center,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      CustomText(
+                        text: 'Dashboard UI',
+                        align: TextAlign.center,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
-}
-
-class DefaultFirebaseOptions {
-  static const FirebaseOptions currentPlatform = FirebaseOptions(
-      apiKey: "AIzaSyBdJFKxg7-WSrb0eKJNHYCvbYmfJu97wQg",
-      authDomain: "firecrudapp-b1f3a.firebaseapp.com",
-      projectId: "firecrudapp-b1f3a",
-      storageBucket: "firecrudapp-b1f3a.firebasestorage.app",
-      messagingSenderId: "130484030618",
-      appId: "1:130484030618:web:4afab6dcfacd13db37e323");
 }
